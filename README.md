@@ -34,7 +34,7 @@ android {
 
     defaultConfig {
 	      ...
-        ndk.abiFilters 'arm64-v8a'
+        ndk.abiFilters 'arm64-v8a', 'armeabi-v7a'
     }
 
     ...
@@ -43,10 +43,6 @@ android {
         main {
             jni.srcDirs = ['src/main/jniLibs/']
         }
-    }
-
-    packagingOptions {
-        exclude "src/main/jniLibs/arm64-v8a/libdh_denoise.a"
     }
 }
 ```
