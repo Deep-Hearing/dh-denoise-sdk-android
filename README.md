@@ -109,7 +109,7 @@ long modelPtr = DenoiseEngine.initModel();
 
 ...
 
-DenoiseEngine.denoise(modelPtr, audioBuffer, FRAME_SIZE, TRUE);
+DenoiseEngine.denoise(modelPtr, audioBuffer, FRAME_SIZE, FALSE);
 
 ...
 
