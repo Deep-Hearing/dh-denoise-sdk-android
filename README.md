@@ -98,7 +98,7 @@ public enum DenoiseEngine {
     // Native methods
     static native long initModel();
     static native void deleteModel(long modelPtr);
-    static native float[] denoise(long modelPtr, float[] audioData, int sampleSize, int enableBypass);
+    static native int denoise(long modelPtr, float[] inputAudio, float[] outputAudio, int sampleSize, int enableBypass);
 }
 ```
 
@@ -109,7 +109,7 @@ long modelPtr = DenoiseEngine.initModel();
 
 ...
 
-DenoiseEngine.denoise(modelPtr, audioBuffer, FRAME_SIZE, FALSE);
+DenoiseEngine.denoise(modelPtr, inputAudio, outputAudio, FRAME_SIZE, FALSE);
 
 ...
 
@@ -123,7 +123,7 @@ DenoiseEngine.deleteModel(modelPtr);
 ### `initModel()`
 
 ```java
-public native long initModel();
+public long initModel();
 ```
 
 필요한 리소스 할당 및 초기화 작업을 진행합니다. 
@@ -144,7 +144,7 @@ if (modelPtr == 0) {
 ### `deleteModel()`
 
 ```java
-public native void deleteModel(long modelPtr);
+public void deleteModel(long modelPtr);
 ```
 
 딥히어링 노이즈 제거 모델의 리소스를 할당 해제 합니다.
@@ -152,7 +152,7 @@ public native void deleteModel(long modelPtr);
 ### `denoise()`
 
 ```java
-public native float[] denoise(long modelPtr, float[] audioData, int sampleSize, int enableBypass);
+public int denoise(long modelPtr, float[] inputAudio, float[] outputAudio, int sampleSize, int enableBypass);
 ```
 
 입력된 오디오 데이터에 대해 노이즈 제거 처리를 합니다.
